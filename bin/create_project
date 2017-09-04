@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# Create an empty project directory structure.
+# - Inspired by Cookiecutter Data Science:
+# https://drivendata.github.io/cookiecutter-data-science
+
+# check if project name was provided as arguments 
+if [[ $# -eq 0 ]]; then
+  read -p "Enter project name: " projname
+else
+  projname=$1
+fi
+
+# full path to project
+projpath="${HOME}/Projects/${projname}"
+
+# check if project already exists
+while [[ -d $projpath ]]; do
+  read -p "Project $projname already exists. Overwrite? [y/N]": yn
+    # default answer is 'N'
+    yn=${yn:-N}
+    case "$yn" in
+        [Yy]* ) rm -r $projpath;;
+        [Nn]* ) read -p "Enter new project name: " projname
+        projpath="${HOME}/Projects/${projname}"
+        ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Create project directory structure for $projname."
+
+# create directories
+mkdir -p "${projpath}/data/external"
+mkdir -p "${projpath}/data/interim"
+mkdir -p "${projpath}/data/processed"
+mkdir -p "${projpath}/data/raw"
+mkdir -p "${projpath}/docs"
+mkdir -p "${projpath}/notebooks"
+mkdir -p "${projpath}/references"
+mkdir -p "${projpath}/reports"
+mkdir -p "${projpath}/src"
+
+# create  __init__.py in "${projpath}/src" to make it a python module
+touch "${projpath}/src/__init__.py"
