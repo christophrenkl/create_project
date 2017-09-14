@@ -41,5 +41,23 @@ mkdir -p "${projpath}/references/figures"
 mkdir -p "${projpath}/reports"
 mkdir -p "${projpath}/src"
 
+# make sure that data directories are pushed to git repo even if they are empty
+touch "${projpath}/data/external/.gitkeep"
+touch "${projpath}/data/raw/.gitkeep"
+touch "${projpath}/data/interim/.gitkeep"
+touch "${projpath}/data/processed/.gitkeep"
+
 # create  __init__.py in "${projpath}/src" to make it a python module
 touch "${projpath}/src/__init__.py"
+
+# create .gitignore file
+cat <<EOF > ${projpath}/.gitignore
+# exclude data from source control by default
+/data/
+EOF
+
+# create git repository
+cd $projpath
+git init
+git add -A
+git commit -m "Initial commit, empty directory structure"
