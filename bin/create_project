@@ -20,7 +20,7 @@ while [[ -d $projpath ]]; do
     # default answer is 'N'
     yn=${yn:-N}
     case "$yn" in
-        [Yy]* ) rm -r $projpath;;
+        [Yy]* ) rm -rf $projpath;;
         [Nn]* ) read -p "Enter new project name: " projname
         projpath="${HOME}/Projects/${projname}"
         ;;
@@ -55,6 +55,9 @@ cat <<EOF > ${projpath}/.gitignore
 # exclude data from source control by default
 /data/
 EOF
+
+# create README file with project name as header
+echo "# $projname" >> ${projpath}/README.md
 
 # create git repository
 cd $projpath
