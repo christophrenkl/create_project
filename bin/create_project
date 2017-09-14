@@ -63,4 +63,8 @@ echo "# $projname" >> ${projpath}/README.md
 cd $projpath
 git init
 git add -A
-git commit -m "Initial commit, empty directory structure"
+git add -f data/external/.gitkeep 
+git add -f data/processed/.gitkeep
+git add -f data/interim/.gitkeep 
+git add -f data/raw/.gitkeep
+git commit -m "Initial commit"
