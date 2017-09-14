@@ -37,8 +37,8 @@ mkdir -p "${projpath}/data/processed"
 mkdir -p "${projpath}/data/raw"
 mkdir -p "${projpath}/docs"
 mkdir -p "${projpath}/notebooks"
-mkdir -p "${projpath}/references/figures"
-mkdir -p "${projpath}/reports"
+mkdir -p "${projpath}/references"
+mkdir -p "${projpath}/reports/figures"
 mkdir -p "${projpath}/src"
 
 # make sure that data directories are pushed to git repo even if they are empty
