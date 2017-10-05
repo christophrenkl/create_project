@@ -1,4 +1,4 @@
-# =============================================================================
+# Python Files ================================================================
 # Source: https://github.com/github/gitignore/blob/master/Python.gitignore
 
 # Byte-compiled / optimized / DLL files
@@ -106,7 +106,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# =============================================================================
+# LaTeX files =================================================================
 # Source: https://github.com/github/gitignore/blob/master/TeX.gitignore
 
 ## Core latex/pdflatex auxiliary files:
