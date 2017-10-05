@@ -54,7 +54,11 @@ touch "${projpath}/src/__init__.py"
 cat <<EOF > ${projpath}/.gitignore
 # exclude data from source control by default
 /data/
+
 EOF
+
+# append .gitignore template
+cat "../templates/gitignore-template" >> ${projpath}/.gitignore
 
 # create README file with project name as header
 echo "# $projname" >> ${projpath}/README.md
