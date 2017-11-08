@@ -40,6 +40,7 @@ mkdir -p "${projpath}/notebooks"
 mkdir -p "${projpath}/references"
 mkdir -p "${projpath}/reports/figures"
 mkdir -p "${projpath}/src"
+mkdir -p "${projpath}/bin"
 
 # make sure that data directories are pushed to git repo even if they are empty
 touch "${projpath}/data/external/.gitkeep"
