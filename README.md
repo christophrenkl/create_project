@@ -4,7 +4,7 @@ This is a bash script which creates an empty project directory structure inspire
 
 The file structure is
 
-'''
+```
    sample_project/
    ├── bin
    ├── data
@@ -19,4 +19,4 @@ The file structure is
    ├── reports
    │   └── figures
    └── src
-'''
+```
