@@ -4,19 +4,19 @@ This is a bash script which creates an empty project directory structure inspire
 
 The file structure is
 
-sample_project/
-├── bin
-├── data
-│   ├── external
-│   ├── interim
-│   ├── processed
-│   └── raw
-├── docs
-├── notebooks
-├── README.md
-├── references
-├── reports
-│   └── figures
-└── src
-
-
+'''
+   sample_project/
+   ├── bin
+   ├── data
+   │   ├── external
+   │   ├── interim
+   │   ├── processed
+   │   └── raw
+   ├── docs
+   ├── notebooks
+   ├── README.md
+   ├── references
+   ├── reports
+   │   └── figures
+   └── src
+'''
