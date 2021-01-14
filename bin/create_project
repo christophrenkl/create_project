@@ -86,8 +86,11 @@ touch "${projpath}/src/__init__.py"
 
 # create .gitignore file
 cat <<EOF > ${projpath}/.gitignore
-# exclude data from source control by default
+# exclude /data from version control
 /data/
+
+# do not track figures
+/reports/figures/*
 
 EOF
 
