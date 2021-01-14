@@ -12,7 +12,7 @@ else
 fi
 
 # full path to project
-projpath="${HOME}/Projects/${projname}"
+projpath="${HOME}/projects/${projname}"
 
 # check if project already exists
 while [[ -d $projpath ]]; do
@@ -22,7 +22,7 @@ while [[ -d $projpath ]]; do
     case "$yn" in
         [Yy]* ) rm -rf $projpath;;
         [Nn]* ) read -p "Enter new project name: " projname
-        projpath="${HOME}/Projects/${projname}"
+        projpath="${HOME}/projects/${projname}"
         ;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -32,23 +32,56 @@ echo "Create project directory structure for $projname."
 
 # create directories
 mkdir -p "${projpath}/data/external"
+cat <<EOF > ${projpath}/data/external/README.md
+Datasets from external sources.
+EOF
+
 mkdir -p "${projpath}/data/interim"
+cat <<EOF > ${projpath}/data/interim/README.md
+Intermediate datasets mainly needed to reproduce results in notebooks.
+EOF
+
 mkdir -p "${projpath}/data/processed"
+cat <<EOF > ${projpath}/data/processed/README.md
+Processed data from external and raw data.
+EOF
+
 mkdir -p "${projpath}/data/raw"
-mkdir -p "${projpath}/docs"
+cat <<EOF > ${projpath}/data/raw/README.md
+Original, raw data. *Do not modify!*."
+EOF
+
 mkdir -p "${projpath}/notebooks"
+cat <<'EOF' > ${projpath}/notebooks/README.md
+Jupyter notebooks. Naming convention is a number (for ordering), the creator's
+initials, and a short `-` delimited description, 
+e.g., `1.0-jqp-initial-data-exploration`.
+EOF
+
 mkdir -p "${projpath}/references"
+cat <<'EOF' > ${projpath}/references/README.md
+Data dictionaries, manuals, and all other explanatory materials.
+EOF
+
 mkdir -p "${projpath}/reports/figures"
+cat <<'EOF' > ${projpath}/reports/README.md
+Generated analysis as HTML, PDF, LaTeX, etc.
+EOF
+cat <<'EOF' > ${projpath}/reports/figures/README.md
+Generated graphics and figures to be used in reporting.
+EOF
+
 mkdir -p "${projpath}/src"
-mkdir -p "${projpath}/bin"
+cat <<'EOF' > ${projpath}/src/README.md
+Python source code for use in this project.
+EOF
 
-# make sure that data directories are pushed to git repo even if they are empty
-touch "${projpath}/data/external/.gitkeep"
-touch "${projpath}/data/raw/.gitkeep"
-touch "${projpath}/data/interim/.gitkeep"
-touch "${projpath}/data/processed/.gitkeep"
+mkdir -p "${projpath}/scripts"
+cat <<'EOF' > ${projpath}/scripts/README.md
+Shell scripts for use in this project.
+EOF
 
-# create  __init__.py in "${projpath}/src" to make it a python module
+# create  __init__.py in "${projpath}/${projname}" to make it a python module
 touch "${projpath}/src/__init__.py"
 
 # create .gitignore file
@@ -67,9 +100,14 @@ echo "# $projname" >> ${projpath}/README.md
 # create git repository
 cd $projpath
 git init
-git add -A
-git add -f data/external/.gitkeep 
-git add -f data/processed/.gitkeep
-git add -f data/interim/.gitkeep 
-git add -f data/raw/.gitkeep
+git add .
+git add -f data/external/README.md
+git add -f data/processed/README.md
+git add -f data/interim/README.md
+git add -f data/raw/README.md
 git commit -m "Initial commit"
+
+# push to GitHub
+git remote add origin git@github.com:christophrenkl/${projname}.git
+git branch -M main
+git push -u origin main
