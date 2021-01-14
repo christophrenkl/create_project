@@ -100,6 +100,12 @@ cat "../templates/gitignore-template" >> ${projpath}/.gitignore
 # create README file with project name as header
 echo "# $projname" >> ${projpath}/README.md
 
+# create environment.yml file
+cat <<EOF > ${projpath}/environment.yml
+name: ${projname}
+EOF
+cat "../templates/environment.yml" >> ${projpath}/environment.yml
+
 # create git repository
 cd $projpath
 git init
