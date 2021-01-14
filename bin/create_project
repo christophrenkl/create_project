@@ -81,6 +81,9 @@ cat <<'EOF' > ${projpath}/scripts/README.md
 Shell scripts for use in this project.
 EOF
 
+# copy dummy module dummy.py from templates
+cp ../templates/dummy.py ${projpath}/src/
+
 # create  __init__.py in "${projpath}/${projname}" to make it a python module
 touch "${projpath}/src/__init__.py"
 
